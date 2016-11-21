@@ -60,7 +60,7 @@ namespace Kicad.Lib
             do
             {
                 String line = reader.ReadLine();
-                if (reader.EndOfStream == true)
+                if (reader.EndOfStream == true && line == null)
                     return false;
                 if (line.StartsWith("#"))
                     continue;

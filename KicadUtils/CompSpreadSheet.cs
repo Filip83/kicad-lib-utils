@@ -13,6 +13,7 @@ namespace KicadUtils
 {
     public partial class CompSpreadSheet : Form
     {
+        private bool modified = false;
         private List<KicadLibPin> _Pins;
         public KicadLibComponent Component { get; set; }
         public CompSpreadSheet()
@@ -148,14 +149,18 @@ namespace KicadUtils
 
         private void CompSpreadSheet_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            if (modified)
+                this.DialogResult = DialogResult.OK;
+            else
+                this.DialogResult = DialogResult.Cancel;
         }
 
         private void Prop_Click(object sender, EventArgs e)
         {
             CmpProperties prop = new CmpProperties();
             prop.Component = Component;
-            prop.ShowDialog();
+            if (prop.ShowDialog() == DialogResult.OK)
+                modified = true;
         }
 
         private void readUCF_Click(object sender, EventArgs e)
@@ -284,6 +289,8 @@ namespace KicadUtils
 
                     Component.DrawObjects.Add(curpin);
                 }
+
+                modified = true;
             }
         }
     }

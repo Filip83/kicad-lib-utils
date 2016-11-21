@@ -163,19 +163,20 @@ namespace KicadUtils
         private void NewComponent_Click(object sender, EventArgs e)
         {
 
-            if (primaryLIb.Components.Count != 0)
+            //if (primaryLIb.Components.Count != 0)
             {
                 CompSpreadSheet spch = new CompSpreadSheet();
                 if (spch.ShowMyDalog(0) == DialogResult.OK)
                 {
                     primaryLIb.Components.Add(spch.Component);
                     RefreshPrimaryList();
+                    SaveBtn.Enabled = true;
                 }
             }
-            else
+            /*else
             {
                 MessageBox.Show("Component can be only added to opened libray.");
-            }
+            }*/
 
         }
 
