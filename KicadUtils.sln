@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KicadUtils", "KicadUtils\KicadUtils.csproj", "{DA216E1F-FEE9-4691-BAB1-8FB58C65A698}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885} = {8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kicad", "Kicad\Kicad.csproj", "{8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA216E1F-FEE9-4691-BAB1-8FB58C65A698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA216E1F-FEE9-4691-BAB1-8FB58C65A698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA216E1F-FEE9-4691-BAB1-8FB58C65A698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA216E1F-FEE9-4691-BAB1-8FB58C65A698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCBCCCF-41E6-45EF-BF03-4F7EB4A47885}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
