@@ -43,16 +43,16 @@
             this.docuKeyWord = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.FootPrints = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OkBtn = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.FootPrints = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -189,6 +189,25 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Description:";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.FootPrints);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(577, 515);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Footprints Hints";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // FootPrints
+            // 
+            this.FootPrints.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FootPrints.Location = new System.Drawing.Point(0, 0);
+            this.FootPrints.Name = "FootPrints";
+            this.FootPrints.Size = new System.Drawing.Size(577, 515);
+            this.FootPrints.TabIndex = 0;
+            this.FootPrints.Text = "";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.CancelBtn);
@@ -219,25 +238,6 @@
             this.OkBtn.UseVisualStyleBackColor = true;
             this.OkBtn.Click += new System.EventHandler(this.OkBtn_Click);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.FootPrints);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(577, 515);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Footprints Hints";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // FootPrints
-            // 
-            this.FootPrints.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FootPrints.Location = new System.Drawing.Point(0, 0);
-            this.FootPrints.Name = "FootPrints";
-            this.FootPrints.Size = new System.Drawing.Size(577, 515);
-            this.FootPrints.TabIndex = 0;
-            this.FootPrints.Text = "";
-            // 
             // CmpProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,19 +245,21 @@
             this.ClientSize = new System.Drawing.Size(585, 541);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CmpProperties";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CmpProperties";
+            this.Text = "Component Properties";
             this.Load += new System.EventHandler(this.CmpProperties_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

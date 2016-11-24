@@ -74,7 +74,7 @@ namespace Kicad.Lib
         public override String ToString()
         {
             StringBuilder outstr = new StringBuilder();
-            outstr.AppendFormat(CultureInfo.InstalledUICulture, "DEF {0} {1} 0 {2} {3} {4} {5} {6} {7}",
+            outstr.AppendFormat(CultureInfo.InstalledUICulture, "DEF {0} {1} 1 {2} {3} {4} {5} {6} {7}",
                 Name, Reference,TextOffset,DrawPinNumber,DrawPinName,UnitsCount,UnitLocked,Options);
 
             return outstr.ToString();
