@@ -14,6 +14,7 @@ namespace KicadUtils
     public partial class CompSpreadSheet : Form
     {
         private bool modified = false;
+        private bool newComponent = false;
         private List<KicadLibPin> _Pins;
         public KicadLibComponent Component { get; set; }
         public CompSpreadSheet()
@@ -79,22 +80,24 @@ namespace KicadUtils
                         spreadSheet.Rows[i].Cells[3].Value = "Input";
                         spreadSheet.Rows[i].Cells[4].Value = "Line";
 
-                        spreadSheet.Rows[i].Cells[5].Value = KicadUnitConvert.From_mm(1.270);
-                        spreadSheet.Rows[i].Cells[6].Value = KicadUnitConvert.From_mm(1.270);
-                        spreadSheet.Rows[i].Cells[7].Value = KicadUnitConvert.From_mm(3.810);
+                        spreadSheet.Rows[i].Cells[5].Value = 50;
+                        spreadSheet.Rows[i].Cells[6].Value = 50;
+                        spreadSheet.Rows[i].Cells[7].Value = 200;
                         //spreadSheet.Rows[i].Cells[8].Value = true;
                     }
-                    
+                    newComponent = true;
                 }
                 
             }
             else if (id == 1)
             {
-                foreach(Object obj in Component.DrawObjects)
+                _Pins = new List<KicadLibPin>();
+                foreach (Object obj in Component.DrawObjects)
                 {
                     if(obj.GetType() == typeof(KicadLibPin))
                     {
                         KicadLibPin curpin = (KicadLibPin)obj;
+                        _Pins.Add(curpin);
                         spreadSheet.Rows.Add(
                         curpin.Name,
                         curpin.Pin,
@@ -107,6 +110,7 @@ namespace KicadUtils
                         true*/);
                     }
                 }
+                newComponent = false;
             }
             else
                 return System.Windows.Forms.DialogResult.Abort;
@@ -273,19 +277,51 @@ namespace KicadUtils
         {
             if (_Pins != null)
             {
+                Component.DrawObjects.Clear();
+                int length = _Pins.Count / 4;
+                int xstart = -(length / 2)*200;
+                int ystart = (length / 2)*200;
                 for (int i = 0; i < _Pins.Count; i++)
                 {
                     KicadLibPin curpin = _Pins[i];
 
                     curpin.Name = spreadSheet.Rows[i].Cells[0].Value.ToString();
-                    curpin.Pin = (i + 1).ToString();
-                    curpin.Orientation = new KicadLibPinOrientation(spreadSheet.Rows[i].Cells[2].Value.ToString());
+                    curpin.Pin = spreadSheet.Rows[i].Cells[1].Value.ToString(); //(i + 1).ToString();
+                    //curpin.Orientation = new KicadLibPinOrientation(spreadSheet.Rows[i].Cells[2].Value.ToString());
                     curpin.Type = new KicadLibPinType(spreadSheet.Rows[i].Cells[3].Value.ToString());
                     curpin.Shape = new KicadLibPinShape(spreadSheet.Rows[i].Cells[4].Value.ToString());
                     curpin.Sizename = (System.Convert.ToDouble(spreadSheet.Rows[i].Cells[5].Value.ToString()));
                     curpin.Sizenum = (System.Convert.ToDouble(spreadSheet.Rows[i].Cells[6].Value.ToString()));
                     curpin.Length = (System.Convert.ToDouble(spreadSheet.Rows[i].Cells[7].Value.ToString()));
-                    curpin.Position.Y = i * 200;
+                    curpin.Length = 200;
+                    curpin.Part = curpin.Dmg = 1;
+                    if (newComponent)
+                    {
+                        if(i < length)
+                        {
+                            curpin.Position.Y = ystart + 400;
+                            curpin.Position.X = xstart + i * 200;
+                            curpin.Orientation.Value = KicadLibPinOrientation.PinOrentation.Down;
+                        }
+                        else if( i < 2*length)
+                        {
+                            curpin.Position.X = xstart*(-1) + 400;
+                            curpin.Position.Y = ystart - (i - length) * 200;
+                            curpin.Orientation.Value = KicadLibPinOrientation.PinOrentation.Left;
+                        }
+                        else if(i < 3*length)
+                        {
+                            curpin.Position.Y = ystart*(-1) - 400;
+                            curpin.Position.X = xstart*(-1) - (i - 2*length) * 200;
+                            curpin.Orientation.Value = KicadLibPinOrientation.PinOrentation.Up;
+                        }
+                        else
+                        {
+                            curpin.Position.X = xstart - 400;
+                            curpin.Position.Y = ystart*(-1) + (i - 3*length) * 200;
+                            curpin.Orientation.Value = KicadLibPinOrientation.PinOrentation.Right;
+                        }  
+                    }
 
                     Component.DrawObjects.Add(curpin);
                 }

@@ -30,6 +30,8 @@ namespace Kicad.Lib
 
         public void Clear()
         {
+            Version = "EESchema-LIBRARY Version 2.3";
+            Version2 = "EESchema-DOCLIB  Version 2.0";
             Components.Clear();
         }
         
@@ -76,7 +78,8 @@ namespace Kicad.Lib
         public void Save()
         {
             StreamWriter writer = new StreamWriter(FileName);
-            foreach(KicadLibComponent component in Components)
+            writer.WriteLine(Version);
+            foreach (KicadLibComponent component in Components)
             {
                 String outstr = component.ToString();
                 writer.Write(outstr);
@@ -87,7 +90,7 @@ namespace Kicad.Lib
             FileInfo fInfo = new FileInfo(FileName);
             String docuFile = fInfo.Directory + "\\" + fInfo.Name.Replace(fInfo.Extension, ".dcm");
             writer = new StreamWriter(docuFile);
-            writer.WriteLine(Version);
+            writer.WriteLine(Version2);
             foreach (KicadLibComponent component in Components)
             {
                 if (component.Documentation != null)
@@ -114,7 +117,7 @@ namespace Kicad.Lib
             FileInfo fInfo = new FileInfo(fileName);
             String docuFile = fInfo.Directory + "\\" + fInfo.Name.Replace(fInfo.Extension, ".dcm");
             writer = new StreamWriter(docuFile);
-            writer.WriteLine(Version);
+            writer.WriteLine(Version2);
             foreach (KicadLibComponent component in Components)
             {
                 if (component.Documentation != null)
