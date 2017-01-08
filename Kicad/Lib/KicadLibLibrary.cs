@@ -9,6 +9,14 @@ using System.Windows;
 
 namespace Kicad.Lib
 {
+    public class KicadLibrarySoreter : IComparer<KicadLibComponent>
+    {
+        public int Compare(KicadLibComponent x, KicadLibComponent y)
+        {
+            return String.Compare(x.Definition.Name, y.Definition.Name);
+        }
+    }
+
     public class KicadLibLibrary
     {
         public List<KicadLibComponent> Components {get;set;}
@@ -138,5 +146,12 @@ namespace Kicad.Lib
         {
             Components.RemoveAt(idx);
         }
+
+        public void Sort()
+        {
+            KicadLibrarySoreter sorter = new KicadLibrarySoreter();
+            Components.Sort(sorter);
+        }
+
     }
 }

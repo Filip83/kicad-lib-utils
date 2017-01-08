@@ -25,6 +25,22 @@ namespace Kicad.Lib
             DrawObjects = new List<object>();
         }
 
+        public void RemovePins()
+        {
+            List<Object> toRemove = new List<object>();
+            foreach (Object dobj in DrawObjects)
+            {
+                if(dobj.GetType() == typeof(KicadLibPin))
+                {
+                    toRemove.Add(dobj);
+                }
+            }
+
+            foreach(Object obj in toRemove)
+            {
+                DrawObjects.Remove(obj);
+            }
+        }
         public override string ToString()
         {
             StringBuilder outstr = new StringBuilder();

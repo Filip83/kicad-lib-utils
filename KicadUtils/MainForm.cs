@@ -25,6 +25,7 @@ namespace KicadUtils
         private void RefreshPrimaryList()
         {
             PrimaryLibList.Items.Clear();
+            primaryLIb.Sort();
             foreach (KicadLibComponent cmp in primaryLIb.Components)
             {
                 PrimaryLibList.Items.Add(cmp.Definition.Name);
@@ -153,6 +154,7 @@ namespace KicadUtils
             {
                 if (primaryLIb.Components.Count != 0)
                 {
+                    primaryLIb.Sort();
                     SaveBtn.Enabled = false;
                     primaryLIb.Save();
                 }
@@ -201,6 +203,7 @@ namespace KicadUtils
                 {
                     if (saveLibDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
+                        primaryLIb.Sort();
                         primaryLIb.Save(saveLibDlg.FileName);
                     }
                 }

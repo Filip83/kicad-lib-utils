@@ -277,7 +277,7 @@ namespace KicadUtils
         {
             if (_Pins != null)
             {
-                Component.DrawObjects.Clear();
+                Component.RemovePins();
                 int length = _Pins.Count / 4;
                 int xstart = -(length / 2)*200;
                 int ystart = (length / 2)*200;
@@ -293,11 +293,13 @@ namespace KicadUtils
                     curpin.Sizename = (System.Convert.ToDouble(spreadSheet.Rows[i].Cells[5].Value.ToString()));
                     curpin.Sizenum = (System.Convert.ToDouble(spreadSheet.Rows[i].Cells[6].Value.ToString()));
                     curpin.Length = (System.Convert.ToDouble(spreadSheet.Rows[i].Cells[7].Value.ToString()));
-                    curpin.Length = 200;
-                    curpin.Part = curpin.Dmg = 1;
+                  
                     if (newComponent)
                     {
-                        if(i < length)
+                        curpin.Length = 200;
+                        curpin.Part = curpin.Dmg = 1;
+
+                        if (i < length)
                         {
                             curpin.Position.Y = ystart + 400;
                             curpin.Position.X = xstart + i * 200;
