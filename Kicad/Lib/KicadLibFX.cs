@@ -56,7 +56,7 @@ namespace Kicad.Lib
                 Position.Y = System.Convert.ToInt32(items[3]);
                 TextSize = System.Convert.ToInt32(items[4]);
                 Oreintation.Parse(items[5]);
-                Oreintation.Parse(items[6]);
+                Visible.Parse(items[6]);
                 HJustify.Parse(items[7]);
                 VJustify.Parse(items[8]);
                 if (CheckName)
@@ -88,7 +88,7 @@ namespace Kicad.Lib
                 Position.Y = System.Convert.ToInt32(items[3]);
                 TextSize = System.Convert.ToInt32(items[4]);
                 Oreintation.Parse(items[5]);
-                Oreintation.Parse(items[6]);
+                Visible.Parse(items[6]);
                 HJustify.Parse(items[7]);
                 VJustify.Parse(items[8]);
                 if (CheckName)
