@@ -68,8 +68,11 @@ namespace KicadUtils
         private void OkBtn_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.OK;
-            Component.Definition.Name = cmpName.Text;
-            Component.Definition.Reference = cmpDeisg.Text;
+            Component.Definition.Name = cmpName.Text.Trim();
+            Component.Definition.Reference = cmpDeisg.Text.Trim();
+
+            Component.Parameters[0].Name = cmpDeisg.Text.Trim();
+            Component.Parameters[1].Name = cmpName.Text.Trim();
             if (Component.Documentation == null)
                 Component.Documentation = new KicadLibDocu();
 
